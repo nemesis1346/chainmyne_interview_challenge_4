@@ -4,7 +4,7 @@ const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerDefinition = {
   openapi: '3.0.0',
   info: {
-    title: 'ChainMyne Challenge 2',
+    title: 'ChainMyne Challenge 4',
     version: '1.0.0',
     description: `
   For this challenge I created a node js server too that calls axios request to the CoinGecko API to fetch the historical price of a coin by its coind id(not its symbol: VERY IMPORTANT)
