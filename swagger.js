@@ -9,10 +9,6 @@ const swaggerDefinition = {
     description: `
   For this challenge I created a node js server too that calls axios request to the CoinGecko API to fetch the historical price of a coin by its coind id(not its symbol: VERY IMPORTANT)
     
-  The server app is running in the following url:
-      
-  https://chainmyne-challenge4-8f41f237d962.herokuapp.com/api-docs/#/default/get_api_price_history__coinId_
-      
   #### Features:
       
   * it runs with swagger UI so anyone can interact with the api endpoint for the coins
