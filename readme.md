@@ -6,6 +6,7 @@ The server app is running in the following url:
 
 https://chainmyne-challenge4-8f41f237d962.herokuapp.com/api-docs/#/default/get_api_price_history__coinId_
 
+
 #### Features:
 
 * It runs with swagger UI so anyone can interact with the api endpoint for the coins
@@ -30,3 +31,20 @@ https://chainmyne-challenge4-8f41f237d962.herokuapp.com/api-docs/#/default/get_a
 (IMPORTANT: it needs to be coin id) 
 6. Read coin price_history data from mongo db atlas
 9. Filter unnecesary attributes and present to the user
+
+### Assumptions:
+
+Since the coingecko endpoint https://api.coingecko.com/api/v3/coins/${coinId}/market_chart/range? gives a subjson of items that have only the price and the timestamp, our current schema simulates the fetching of additional data attributes like this:
+
+```
+const formattedPrices = prices.map(priceData => ({
+		timestamp: new Date(priceData[0]),
+		price_usd: priceData[1],
+		market_cap: Math.random() * 1000000000,  // Just an example, real market cap would come from the API
+		volume: Math.random() * 1000000,  // Example, replace with real data from CoinGecko
+		high_24h: priceData[1] * 1.1,  // Example data
+		low_24h: priceData[1] * 0.9,  // Example data
+	}));
+
+    // Important: just priceData[1] (price) and priceData[0] (timestamp) are given in this endpoint	
+```
