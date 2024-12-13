@@ -40,7 +40,7 @@ const populatePriceHistory = async (coinId, startDate, endDate) => {
 		console.log(`No data available for ${coinId}`);
 		return;
 	}
-	
+
 	// Prepare the data to be inserted
 	const formattedPrices = prices.map(priceData => ({
 		timestamp: new Date(priceData[0]),
