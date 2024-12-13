@@ -1,10 +1,10 @@
-# ChainMyne Challenge 2
+# ChainMyne Challenge 4
 
-For this challenge I created a node js server that calls axios request to the CoinGecko APi to fetch the information required
+For this challenge I created a node js server too that calls axios request to the CoinGecko API to fetch the historical price of a coin by its coind id(not its symbol: VERY IMPORTANT)
 
 The server app is running in the following url:
 
-https://coingecko-swagger-605be96ad247.herokuapp.com/api-docs/#/default/get_api_coins
+https://chainmyne-challenge4-8f41f237d962.herokuapp.com/api-docs/#/default/get_api_price_history__coinId_
 
 #### Features:
 
@@ -14,18 +14,18 @@ https://coingecko-swagger-605be96ad247.herokuapp.com/api-docs/#/default/get_api_
 
 * it uses mongo db atlas for storing the information and reading from it
 
-* it uses mongo db model for fetching the data of the coins, then to do specific market data requests by symbol string (eg. ETH, BTC...)
+* it uses mongo db model for fetching the data of the historical price of the coin, then to do specific market data requests by coin id string (eg. ethereum, bitcoin...)
 
 * it prevents lowercase capital case param entries.
 
-### Algorithm for fetching the required data:
+* it cleans up the data obtained from coingeckp price history by coin id and make it readable for the user, the results are nested json of prices by day
+
+### Algorithm for fetching the price history data:
 
 1. listen to the server
 2. connect to mongo db atlas cluster
-3. do a request through swagger to the endpoint /api/coins
-4. fetch data from https://api.coingecko.com/api/v3/coins/list (an entire list of all coins)
-5. prevent upper case entries
-6. read coin data from mongo db atlas
-7. based on the input params, filter out the entire list of coins from mongo db so we have access to the symbol property
-8. do an axios callt o https://api.coingecko.com/api/v3/coins/markets with the processes coin IDs
+3. do a request through swagger to the endpoint /api/price_history/:coindId
+5. prevent upper case from the entries: coinId, startDate, endDate
+4. fetch data from https://api.coingecko.com/api/v3/coins/${coinId}/market_chart/range?(IMPORTANT: it needs to be coin id) and store it in PriceHistory schema
+6. read coin price_history data from mongo db atlas
 9. filter unnecesary attributes and present to the user

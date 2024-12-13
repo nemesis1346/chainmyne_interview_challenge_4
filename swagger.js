@@ -6,25 +6,36 @@ const swaggerDefinition = {
   info: {
     title: 'ChainMyne Challenge 2',
     version: '1.0.0',
-    description: `For this challenge, I created a Node.js server that calls an Axios request to the CoinGecko API to fetch the information required.
-
-    **Features:**
-    - It runs with Swagger UI so anyone can interact with the API endpoint for the coins.
-    - It runs in a Heroku app.
-    - It uses MongoDB Atlas for storing the information and reading from it.
-    - It uses MongoDB model for fetching the data of the coins, then makes specific market data requests by symbol string (e.g., ETH, BTC...).
-    - It prevents uppercase entries for parameters.
-
-    **Algorithm for fetching the required data:**
-    1. Listen to the server.
-    2. Connect to MongoDB Atlas cluster.
-    3. Make a request through Swagger to the endpoint /api/coins.
-    4. Fetch data from https://api.coingecko.com/api/v3/coins/list (an entire list of all coins).
-    5. Prevent uppercase entries in the parameters.
-    6. Read coin data from MongoDB Atlas.
-    7. Based on the input parameters, filter the entire list of coins from MongoDB to access the symbol property.
-    8. Make an Axios call to https://api.coingecko.com/api/v3/coins/markets with the processed coin IDs.
-    9. Filter unnecessary attributes and present them to the user.`
+    description: `
+  For this challenge I created a node js server too that calls axios request to the CoinGecko API to fetch the historical price of a coin by its coind id(not its symbol: VERY IMPORTANT)
+    
+  The server app is running in the following url:
+      
+  https://chainmyne-challenge4-8f41f237d962.herokuapp.com/api-docs/#/default/get_api_price_history__coinId_
+      
+  #### Features:
+      
+  * it runs with swagger UI so anyone can interact with the api endpoint for the coins
+      
+  * it runs in a heroku app. 
+      
+  * it uses mongo db atlas for storing the information and reading from it
+      
+  * it uses mongo db model for fetching the data of the historical price of the coin, then to do specific market data requests by coin id string (eg. ethereum, bitcoin...)
+      
+  * it prevents lowercase capital case param entries.
+      
+  * it cleans up the data obtained from coingeckp price history by coin id and make it readable for the user, the results are nested json of prices by day
+      
+  ### Algorithm for fetching the price history data:
+      
+  1. listen to the server
+  2. connect to mongo db atlas cluster
+  3. do a request through swagger to the endpoint /api/price_history/:coindId
+  5. prevent upper case from the entries: coinId, startDate, endDate
+  4. fetch data from https://api.coingecko.com/api/v3/coins/${coinId}/market_chart/range?(IMPORTANT: it needs to be coin id) and store it in PriceHistory schema
+  6. read coin price_history data from mongo db atlas
+  9. filter unnecesary attributes and present to the user`
   }
 };
 

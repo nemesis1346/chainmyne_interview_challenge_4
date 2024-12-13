@@ -13,6 +13,7 @@
  *           **Note:** This is the full CoinGecko ID, not the symbol. 
  *           For example, use 'bitcoin' instead of 'BTC', and 'ethereum' instead of 'ETH'.
  *           You can find the full CoinGecko IDs for all supported cryptocurrencies on the [CoinGecko API documentation](https://www.coingecko.com/en/api/documentation).
+ *           Othewise you can refer to challeng 1 as well in: https://coingecko-swagger-605be96ad247.herokuapp.com/api-docs/#/default/get_api_coins
  *         schema:
  *           type: string
  *           example: "bitcoin"
