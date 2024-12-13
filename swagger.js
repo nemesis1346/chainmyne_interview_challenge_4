@@ -29,7 +29,8 @@ const swaggerDefinition = {
   2. connect to mongo db atlas cluster
   3. do a request through swagger to the endpoint /api/price_history/:coindId
   5. prevent upper case from the entries: coinId, startDate, endDate
-  4. fetch data from https://api.coingecko.com/api/v3/coins/{coinID}/market_chart/range?(IMPORTANT: it needs to be coin id) and store it in PriceHistory schema
+  4. fetch data from https://api.coingecko.com/api/v3/coins/{coinID}/market_chart/range?
+  (IMPORTANT: it needs to be coin id) and store it in PriceHistory schema
   6. read coin price_history data from mongo db atlas
   9. filter unnecesary attributes and present to the user`
   }
