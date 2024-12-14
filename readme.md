@@ -48,3 +48,11 @@ const formattedPrices = prices.map(priceData => ({
 
     // Important: just priceData[1] (price) and priceData[0] (timestamp) are given in this endpoint	
 ```
+
+### If you want to run the project locally:
+
+nvm use 18.20.0
+npm install
+node server.js
+
+check the browse locaohost:5000
